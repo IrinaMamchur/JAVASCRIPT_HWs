@@ -10,9 +10,7 @@ do{
   }while(userInput !== 0);
 numbers.pop(userInput);
 console.log("Inputed array is: " + numbers);
-// for(i = 0; i < numbers.length; i += 1){
-//   total += numbers[i];
-// }
+
 for(let i of numbers){
   total += i;
 }

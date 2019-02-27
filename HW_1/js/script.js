@@ -2,24 +2,24 @@
   
 const adminLogin = 'admin';
 const adminPassword = 'm4ngo1zh4ackz0r';
-  
-let loginUser = prompt(`Enter login`);
-if (loginUser === null) {
-    alert('Отменено пользователем!');
-} else if (loginUser !== adminLogin) {
-    alert('Доступ запрещен, неверный логин!');
-} else {
-    let password = prompt(`Enter password`);
+let userPassword;
+let userLogin;
 
-if (password === null) {
-    alert('Отменено пользователем!');
-} else if (password !== adminPassword) {
-    alert('Доступ запрещен, неверный пароль!');
-} else {
-    alert('Добро пожаловать!');
+userLogin = prompt('Проосьба ввести логин');
+if (userLogin === adminLogin) {
+    userPassword = prompt('Просьба ввести пароль');
+    if (userPassword === adminPassword) {
+        alert('Добро пожаловать!')
+    } else if (userPassword === null) {
+        alert('Отменено пользователем');
+    } else if (userPassword !== adminPassword) {
+        alert('Неверный пароль !')
+    }
+} else if (userLogin === null) {
+    alert('Отменено пользователем');
+} else if (userLogin !== adminLogin) {
+    alert('Неверный логин')
 }
-}
-
 // При загрузке страницы у посетителя запрашивается логин через prompt:
   
 //     - Если посетитель нажал Cancel — показывать alert с текстом 'Отменено пользователем!'

@@ -1,55 +1,53 @@
-"use strict"
-  
-const logins = ['Mango', 'robotGoogles', 'Poly', 'Aj4x1sBozz', 'qwerty123'];
-console.log('Existing logins database: ', logins);
-const updatedLoginBase = [logins];
-let login = prompt('Please, enter your login');
+'use strick'
 
-// (function expression) (checkLoginValidity)------------------------------------------------------
-const checkLoginValidity = function(login) {
-    if (4 <= login.length && login.length <= 16) {
-        return true;
-    }
-    return false;
-};
-const checkLoginValidityResult = checkLoginValidity(login);
+let logins = ["Mango", "robotGoogles", "Poly", "Aj4x1sBozz", "qwerty123"];
 
-// (function expression) (checkIfLoginExists)------------------------------------------------------
-const checkIfLoginExists = function(logins, login) {
-    if (logins.includes(login)) {
-        return true;
-    }
-    return false;
-};
-const checkIfLoginExistsResult = checkIfLoginExists(logins, login);
-
-// (function expression) (addLogin) ----------------------------------------------------------------
-const addLogin = function(logins, login) {
-    console.log('Entered login: ', login);
-    console.log('login length:', login.length);
-    checkLoginValidity(login);
-    console.log('Length Validity (4-16):', checkLoginValidityResult);
-
-    if (!checkLoginValidityResult) {
-        return console.log('Ошибка! Логин должен быть от 4 до 16 символов');
+const isLoginValid = function(login) {
+    let valid;
+    if (login.length >= 4 && login.length <= 16) {
+        return valid = true;
     } else {
-        console.log(
-            `Checking login " ${login} " for existance in the base of logins...`,
-        );
-        checkIfLoginExists(logins, login);
+        return valid = false;
     }
-    if (!checkIfLoginExistsResult) {
-        console.log('Данный логин отсутствует в базе логинов');
-        console.log('Логин успешно добавлен!');
+};
+
+const isLoginUnique = function(allLogins, login) {
+    let valid;
+    if (allLogins.includes(login)) {
+        console.log('такой логин есть');
+        return valid = false;
+    } else {
+        console.log('такого логина нет');
+        return valid = true;
+    }
+};
+
+const addLogin = function(allLogins, login) {
+    let validLength = isLoginValid(login);
+    let validUnique;
+    console.log('валидность длинны символов', validLength);
+    const array = allLogins;
+ 
+    if (validLength) {
+        validUnique = isLoginUnique(allLogins, login);
+    } else {
+        alert('Ошибка! Логин должен быть от 4 до 16 символов');
+        return;
+    }
+
+    if (validUnique) {
         logins.push(login);
+        alert('Логин успешно добавлен!');
+        return;
     } else {
-        console.log('Такой логин уже используется!');
+        alert('Такой логин уже используется!');
+        return;
     }
 };
 
-// (function call) (addLogin)=======================================================================
-addLogin(logins, login);
-
-
-
-console.log('updated base of logins: ', logins);
+const userlogin = prompt('Введите login от 4 до 16 символов');
+if (userlogin !== null) {
+    addLogin(logins, userlogin);
+} else {
+    alert('отменено пользователем');
+}
