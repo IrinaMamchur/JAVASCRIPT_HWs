@@ -1,50 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css" />
-    <title>hw-10</title>
-  </head>
-  <body>
-    <div class="container ">
-      <button class="btnGetAll">Get all User</button>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+  <title>hw-11</title>
+</head>
 
-      <form class="box">
-        <input type="text" class="input" value="" placeholder="id" />
-        <button class="btnGet">GET</button>
+<body>
+  <div class="root">
+    <section class="sidebar">
+      <form class="form js-form">
+        <section>
+          <h2>Screen size</h2>
+          <ul>
+            <li>
+              <label><input type="checkbox" name="size" value="13" /> 13"</label>
+            </li>
+            <li>
+              <label><input type="checkbox" name="size" value="15" /> 15"</label>
+            </li>
+            <li>
+              <label><input type="checkbox" name="size" value="17" /> 17"</label>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Color</h2>
+          <ul>
+            <li>
+              <label><input type="checkbox" name="color" value="white" /> white</label>
+            </li>
+            <li>
+              <label><input type="checkbox" name="color" value="gray" /> gray</label>
+            </li>
+            <li>
+              <label><input type="checkbox" name="color" value="black" /> black</label>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Release date</h2>
+          <ul>
+            <li>
+              <label><input type="checkbox" name="release_date" value="2015" />
+                2015</label>
+            </li>
+            <li>
+              <label><input type="checkbox" name="release_date" value="2016" />
+                2016</label>
+            </li>
+            <li>
+              <label><input type="checkbox" name="release_date" value="2017" />
+                2017</label>
+            </li>
+          </ul>
+        </section>
+        <button type="submit">Filter</button> <button type="reset">Clear</button>
       </form>
+    </section>
+    <section class="gallery-list">
+      <template id="item">
+        {{#each this}}
+        <div class="gallery-item">
+          <img src="{{img}}" alt="#" class="leptop" />
+          <div class="item-inf">
+            <h3> {{ name }}</h3>
+            <span>Price: {{price }} </span>
+            <span> Release:{{release_date}}</span>
+            <span> Color:{{color }}</span>
+            <p>{{descr }}</p>
+          </div>
+        </div>
+        {{/each}}
+      </template>
+    </section>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
 
-      <form class="add_box">
-        <input type="text" class="inputs" value="" placeholder="name" />
-        <input type="text" class="inputs" value="" placeholder="age" />
-        <button class="btnAdd">Add user</button>
-      </form>
-
-      <form class="delete_box">
-        <input type="text" class="input_del" value="" placeholder="id" />
-        <button class="btnDel">Delete</button>
-      </form>
-
-      <form class="change_box">
-        <input type="text" class="input_id" value="" required placeholder="id" />
-        <input type="text" class="input_name" value="" required placeholder="name" />
-        <input type="text" class="input_age" value="" required placeholder="age" />
-        <button class="btnPut">Update</button>
-      </form>
-    </div>
-    <table class="information">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Age</th>
-        </tr>
-      </thead>
-      <tbody class="table"></tbody>
-    </table>
-
-    <script src="js/script.js"></script>
-  </body>
 </html>
